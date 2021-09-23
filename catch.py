@@ -143,9 +143,12 @@ while running:
         item[1] += gravity * dt
         _position = (item[0], item[1])
         _item_sprite = (16 * item[2], 16 * item[3], 16, 16)
-        window.blit(gold_item, _position, _item_sprite)
+        _sprite = pygame.Surface((16, 16))
+        _sprite.blit(gold_item, (0, 0), _item_sprite)
+        _sprite = pygame.transform.scale(_sprite, (32, 32))
+        window.blit(_sprite, _position)
 
-        _item_rect = (_position[0], _position[1], 16, 16)
+        _item_rect = (_position[0], _position[1], 32, 32)
         if doors[item[4]].collide_with(_item_rect):
             items.remove(item)
             score += 1
