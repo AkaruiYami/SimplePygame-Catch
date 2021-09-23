@@ -52,6 +52,7 @@ spawn_timer = 60
 difficulity = 0
 spawn_cooldown = 0
 score = 0
+lives = 5
 
 
 def generate_item():
@@ -93,15 +94,24 @@ def controls():
             door_opened = None
 
 
-def draw_score(window, score):
+def draw_score(window):
     font = pygame.font.SysFont("Arial", 24)
     text = font.render(str(score), False, (255, 255, 255))
     window.blit(text, (10, 10))
 
 
+def draw_ui(window):
+    font = pygame.font.SysFont("Arial", 24)
+    text = font.render(f"Lives: {lives}", False, (255, 255, 255))
+    window.blit(text, (74, 10))
+
+
 while running:
     dt = clock.tick(60) / 100
     window.fill((0, 0, 0))
+
+    if lives == 0:
+        running = False
 
     if score // 20 != difficulity:
         difficulity = score // 20
@@ -142,11 +152,13 @@ while running:
 
         if item[1] >= settings.HEIGHT + 64:
             items.remove(item)
+            lives -= 1
 
     for door in doors:
         door.draw_door(window)
 
-    draw_score(window, score)
+    draw_score(window)
+    draw_ui(window)
     pygame.display.update()
 
 pygame.quit()
