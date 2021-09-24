@@ -2,8 +2,8 @@ WIDTH = 600
 HEIGHT = 800
 TITLE = "Catch"
 
-lane_size = WIDTH // 4
-lanes = [lane_size * n for n in range(4)]
+LANE_SIZE = WIDTH // 4
+LANES = [LANE_SIZE * n for n in range(4)]
 
-door_image = "assets/Door.png"
-items_image = "assets/sheet.png"
+DOOR_IMAGE = "assets/Door.png"
+ITEMS_IMAGE = "assets/sheet.png"

@@ -14,7 +14,7 @@ class Door:
         self.state = 0
         self.lane_number = lane_number
 
-        self.x = settings.lanes[self.lane_number] + settings.lane_size // 2 - 32
+        self.x = settings.LANES[self.lane_number] + settings.LANE_SIZE // 2 - 32
         self.y = settings.HEIGHT - 64
         self.position = (self.x, self.y)
 
@@ -41,8 +41,8 @@ running = True
 is_debug_mode = False
 clock = pygame.time.Clock()
 
-door = pygame.image.load(settings.door_image)
-gold_item = pygame.image.load(settings.items_image)
+door = pygame.image.load(settings.DOOR_IMAGE)
+gold_item = pygame.image.load(settings.ITEMS_IMAGE)
 
 doors = [Door(door, n) for n in range(4)]
 items = []
@@ -59,7 +59,7 @@ def generate_item():
     _lane = randint(-1, 3)
     if _lane < 0:
         return
-    _x = settings.lanes[_lane] + settings.lane_size // 2 - 8
+    _x = settings.LANES[_lane] + settings.LANE_SIZE // 2 - 8
     items.append([_x, 0, 3, 1, _lane])
 
 
