@@ -107,6 +107,7 @@ def draw_ui(window):
 
 
 while running:
+    # TODO: Main menu
     dt = clock.tick(60) / 100
     window.fill((0, 0, 0))
 
@@ -162,6 +163,7 @@ while running:
 
     draw_score(window)
     draw_ui(window)
+    # TODO: End game screen
     pygame.display.update()
 
 pygame.quit()
